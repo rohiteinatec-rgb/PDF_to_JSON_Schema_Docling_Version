@@ -1,55 +1,57 @@
-# PDF_to_JSON_Schema
+📄 Hybrid PDF Extraction Pipeline
+A high-performance, locally hosted Python pipeline for extracting structured text and tables from invoices. This architecture utilizes a two-tier routing system to process native digital PDFs in milliseconds while dynamically falling back to heavily optimized Tesseract OCR for scanned images.
 
-This project extracts raw text from invoice PDFs and saves it as plain text files. The goal is to facilitate further processing, such as converting the extracted data into structured JSON schemas for automation and analysis.
+🚀 Core Architecture
+This pipeline is designed around a Heuristic Gatekeeper to minimize CPU/RAM overhead and prevent unnecessary deep-learning model allocation.
 
-## Features
-- Extracts text from digital and scanned PDFs (using PyMuPDF)
-- Saves output as .txt files in the output directory
-- Command-line interface with debug mode
+Tier 1: The Fast Track (pymupdf4llm)
 
-## Usage
+Reads native C-structures and binary streams of digital PDFs.
 
-1. Install dependencies (recommended: use a virtual environment):
-   ```
-   pip install pymupdf
-   ```
+Bypasses visual rendering and OCR entirely.
 
-2. Run the detector script:
-   ```
-   python pipeline/detector.py --pdf input/your_invoice.pdf --debug
-   ```
-   - `--pdf`: Path to the PDF file to process
-   - `--debug`: (Optional) Enable debug output
+Execution time: < 0.2 seconds.
 
-3. Output will be saved in the `output/` directory with the same name as the PDF file.
+Tier 2: The Backup Track (Docling + Tesseract)
 
-## Project Structure
+Triggered only if Tier 1 yields < 50 characters (confirming a flat image).
 
-```
-PDF_to_JSON_Schema/
-├── input/                # Place your PDF files here
-│   ├── digital_invoice_test.pdf
-│   └── dummy.pdf
-├── output/               # Extracted text files are saved here
-├── pipeline/
-│   ├── detector.py       # Main script for PDF text extraction
-│   └── output/
-│       ├── digital_invoice_test.txt
-│       └── dummy.txt
-├── README.md
-└── ... (other project files)
-```
+Uses a locally hosted Tesseract binary.
 
-- `input/`: Folder for input PDF files.
-- `output/`: Folder for extracted text files (created by the script).
-- `pipeline/`: Contains the main extraction script and output subfolder.
+Specifically configured with spa (Spanish) language weights to perfectly capture Euro (€) symbols, European decimal commas (1.850,00), and accented characters (ñ, á).
 
-## Example
-See `pipeline/output/digital_invoice_test.txt` for a sample output.
+🛠️ Prerequisites & Setup
+1. Python Dependencies
+   Install the required libraries via pip:
 
-## License
-Einatec License
+Bash
+pip install pymupdf4llm docling
+2. Tesseract OCR (Windows)
+   Because Docling integrates directly with the C++ binary, you must install Tesseract locally.
 
-## Author
-Einatec Team
+Download the 64-bit Windows installer.
 
+During installation, expand Additional language data (download) and check Spanish.
+
+Locate the tesseract.exe file (e.g., C:\Users\username\tesseract.exe or C:\Program Files\Tesseract-OCR\tesseract.exe).
+
+Update the tesseract_cmd path in the Python script to match your installation.
+
+💻 Usage
+Run the extraction script via the command line. Use the --debug flag to see the real-time routing decisions made by the Gatekeeper.
+
+Bash
+# Process a native digital PDF (Routes to Tier 1)
+python detector_docling.py --pdf input/digital_invoice.pdf --debug
+
+# Process a scanned image (Routes to Tier 2)
+python detector_docling.py --pdf input/scanned_invoice.pdf --debug
+Expected Output
+The script saves the extracted Markdown structure to the /output folder, preserving complex table alignments, empty cells (_—), and localized currency symbols, ready for strict JSON mapping.
+
+Plaintext
+[DEBUG] Reading : input/scanned_invoice.pdf
+[DEBUG] Attempting digital extraction with PyMuPDF...
+[DEBUG] Scanned image detected. Routing to Docling + Tesseract...
+Characters extracted : 1411
+Saved to             : output/scanned_invoice.txt

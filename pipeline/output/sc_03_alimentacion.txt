@@ -1,75 +1,93 @@
 ## SABORCAMPO
 
-Saboresdel CampoS.L
+Sabores del Campo S.L.
 
-EMITIDAPOR
+EMITIDA POR
 
 ## Sabores del Campo S.L.
 
-Camino dela Huerta s/n30100Murcia, Espana
+Camino de la Huerta s/n 30100 Murcia, Espana
 
-CIF:B44556677
+CIF:
 
-Tel:+34968123456
+B44556677
+
+Tel:
+
++34 968 12 34 56
 
 pedidos@saborescampo.es
 
 ## FACTURA
 
-DATOSFACTURA
+DATOS FACTURA
 
-N:SC/2025/1102
+N®:
 
-Fecha:14/02/2025
+SC/2025/1102
 
-Vence:16/03/2025
+Fecha:
 
-Pago:Transferencia30dias
+14/02/2025
 
-FACTURARA
+Vence:
+
+16/03/2025
+
+Pago:
+
+Transferencia 30 dias
+
+FACTURAR A
 
 ## Hipermercados La Cesta S.A.
 
-Av.Europa 5528820 Coslada,Espana
+Av. Europa 55 28820 Coslada, Espafa
 
-CIF:A33445566
+CIF:
 
-Ref:PED-78934
+A33445566
 
-| DESCRIPCION                               |   CANT. | PRECIO UNIT.   | DTO.   | IMPORTE   |
-|-------------------------------------------|---------|----------------|--------|-----------|
-| Naranjas Valencia extra (caja 15kg)       |     200 | 12,50          |        | 2.500,00  |
-| Limones Verna primera (caja 12kg)         |     150 | 9,80           |        | 1.470,00  |
-| Tomates rama ecologicos (caja 6kg)        |     300 | 8,40           | 5%     | 2.394,00  |
-| Lechugas Iceberg (caja 12 unidades)       |     180 | 6,20           |        | 1.116,00  |
-| Pimientos rojos californianos (caja 10kg) |     120 | 14,00          | 一      | 1.680,00  |
+Ref:
+
+PED-78934
+
+| DESCRIPCION                               |   CANT. | PRECIO UNIT.   | DTO.   | IMPORTE    |
+|-------------------------------------------|---------|----------------|--------|------------|
+| Naranjas Valencia extra (caja 15kg)       |     200 | 12,50 €        | _      | 2.500,00 € |
+| Limones Verna primera (caja 12kg)         |     150 | 9,80 €         | —      | 1.470,00 € |
+| Tomates rama ecoldgicos (caja 6kg)        |     300 | 8,40 €         | 5%     | 2.394,00 € |
+| Lechugas Iceberg (caja 12 unidades)       |     180 | 6,20 €         | _      | 1.116,00 € |
+| Pimientos rojos californianos (caja 10kg) |     120 | 14,00 €        | _      | 1.680,00 € |
 
 Base Imponible:
 
-9.160,00
+9.160,00 €
 
 IVA (4%):
 
-366,40
-
-TOTALFACTURA:
-
-9.526,40
+366,40 €
 
 NOTAS
 
 IVA superreducido 4% — productos alimenticios basicos. Transporte incluido.
 
-DATOSDEPAGO
+DATOS DE PAGO
 
-Banco: Cajamar Caja Rural
+Banco:
 
-IBAN:ES4430581234561234567890
+Cajamar Caja Rural
 
-SWIFT:CCRIES2AXXX
+IBAN:
 
-Concepto:SC/2025/1102PED-78934
+ES44 3058 1234 5612 3456 7890
 
-Gracias por elegir Saboresdel Campo.Frescura garantizada en cada entrega.
+SWIFT:
 
-CIF:B44556677·Reg.Mercantil Murcia ·Tomo 2.345,Folio 67
+CCRIES2AXXX
+
+Concepto:
+
+SC/2025/1102 PED-78934
+
+Gracias por elegir Sabores del Campo. Frescura garantizada en cada entrega.

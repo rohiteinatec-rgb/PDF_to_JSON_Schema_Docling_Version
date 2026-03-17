@@ -2,29 +2,41 @@
 
 ## Mi Empresa S.L.
 
-Calle Principal 123 28001Madrid,Espana
+Calle Principal 123 28001 Madrid, Espana
 
-CIF:B12345678
+CIF:
 
-## FACTURARA:
+B12345678
 
-## ACMECorporation
+## FACTURAR A:
 
-Av.delaIndustria456 28023Madrid,Espania CIF:A87654321
+## ACME Corporation
 
-| Descripcion                      |   Cant. | Precio   | Importe   |
-|----------------------------------|---------|----------|-----------|
-| ServiciosdeConsultoria-Enero2024 |      40 | 75,00    | 3.000.00  |
-| DesarrollodeSoftware-Modulo CRM  |       1 | 2.500.00 | 2.500,00  |
-| Mantenimiento Anual-Licencias    |       1 | 1.200,00 | 1.200,00  |
+Av. de la Industria 456 28023 Madnd, Espana
 
-| Base Imponible   | 6.700,00   |
-|------------------|------------|
-| IVA (21%)        | 1.407,00   |
-| TOTAL            | 8.107,00   |
+CIF:
 
-## FACTURA FACT/2024/0042
+AS 7654321
 
-Fecha:15/01/2024
+| Descripcién                           | Cant.   | Precio     | Importe    |
+|---------------------------------------|---------|------------|------------|
+| Servicios de Consultoria - Enero 2024 | 40      | 75,00 €    | 3.000,00 € |
+| Desarrollo de Software - Modulo CRM   | L       | ?.500,00 € | 2.500,00 € |
+| Mantenimiento Anual - Licencias       | 1       | 1.200,00 € | 1.200,00 € |
 
-Vencimiento:14/02/2024
+| Base Imponible   | 6.700,00 €   |
+|------------------|--------------|
+| IVA (2196)       | 1.407 ,00 €  |
+| TOTAL            | 8.107,00 €   |
+
+## FACTURA
+
+## FACT/2024/0042
+
+Fecha:
+
+15/01/2024
+
+Vencimiento:
+
+14/02/2024
