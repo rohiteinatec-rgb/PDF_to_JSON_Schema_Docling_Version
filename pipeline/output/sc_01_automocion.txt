@@ -1,95 +1,30 @@
-<!-- image -->
+AUTOPREM FACTURA
 
-EMITIDA POR
+EMITIDA POR FACTURAR A DATOS FACTURA
+Automoción Premium S.L. Transportes Rueda S.A. Ne: AP/2025/0412
+Av. de la Paz 200 28906 Getafe, España Calle Taller 5 28080 Madrid, España Fecha: 01/03/2025
+CIF: B22334455 CIF: A77889900 Vence: 31/03/2025
+Tel: +34 91 600 77 88 Ref: CLI-3310 Pago: Contado
 
-## Automoci6n Premium S.L.
+ventasQautoprem.es
 
-Av. de la Paz 200 28906 Getafe, Espafia
+DESCRIPCIÓN CANT. | PRECIO UNIT. co IMPORTE
 
-CIF:
+Vehiculo Comercial Furgoneta Transito 2.0 TDI 28.500,00 € 3% 55.290,00 €
+Kit equipamiento profesional (estantes + anclajes) 2 850,00 € = 1.700,00 €
+Matriculación y gestión documentación (x2) 2 380,00 € = 760,00 €
+Seguro todo riesgo primer año (x2) 2 1.200,00 € 10% 2.160,00 €
+Revisión pre-entrega y puesta a punto 2 120,00 € = 240,00 €
+Base Imponible: 60.150,00 €
+IVA (21%): 12.631,50 €
+DATOS DE PAGO NOTAS
 
-B22334455
+Banco: Bankinter S.A. Pago al contado. Vehículos disponibles para entrega
 
-Tel:
+IBAN: ES17 0128 1234 5601 0001 2345 inmediata.
 
-+34 91 600 77 88
+SWIFT: BKBKESMMXXX
+Concepto: AP/2025/0412
 
-ventas@autoprem.es
-
-## FACTURA
-
-DATOS FACTURA
-
-Ne:
-
-AP/2025/0412
-
-Fecha:
-
-01/03/2025
-
-Vence:
-
-31/03/2025
-
-Pago:
-
-Contado
-
-FACTURAR A
-
-## Transportes Rueda S.A.
-
-Calle Taller 5 28080 Madrid, Espana
-
-CIF:
-
-A77889900
-
-Ref:
-
-CLI-3310
-
-| DESCRIPCION                                        |   CANT. | PRECIO UNIT.   |     | IMPORTE     |
-|----------------------------------------------------|---------|----------------|-----|-------------|
-| Vehiculo Comercial Furgoneta Transito 2.0 TDI      |       2 | 28.500,00 €    | 3%  | 55.290,00 € |
-| Kit equipamiento profesional (estantes + anclajes) |       2 | 850,00 €       | _   | 1.700,00 €  |
-| Matriculacion y gestién documentacion (x2)         |       2 | 380,00 €       | —_  | 760,00 €    |
-| Seguro todo riesgo primer afio (x2)                |       2 | 1.200,00 €     | 10% | 2.160,00 €  |
-| Revision pre-entrega y puesta a punto              |       2 | 120,00 €       | _   | 240,00 €    |
-
-Base Imponible:
-
-60.150,00 €
-
-IVA (21%):
-
-12.631,50 €
-
-TOTAL FACTURA:
-
-72.781,50 €
-
-NOTAS
-
-Pago al contado. Vehiculos disponibles para entrega inmediata.
-
-DATOS DE PAGO
-
-Banco:
-
-Bankinter S.A.
-
-IBAN:
-
-ES17 0128 1234 5601 0001 2345
-
-SWIFT:
-
-BKBKESMMXXX
-
-Concepto:
-
-AP/2025/0412
-
-Gracias por su compra en Automocion Premium S.L.
+Gracias por su compra en Automoción Premium S.L
+CIF: B2233445: leg. Mercantil Madrid - Tomo 60.100, Folio 9
