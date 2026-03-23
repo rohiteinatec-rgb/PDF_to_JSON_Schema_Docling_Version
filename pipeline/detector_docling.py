@@ -12,6 +12,7 @@ RUN:
 import os
 import argparse
 import fitz  # PyMuPDF
+import pdfplumber
 from pathlib import Path
 
 import pymupdf4llm
@@ -48,6 +49,58 @@ def is_text_based_pdf(pdf_path, debug=False):
 
     return text_area > image_area
 
+def is_extraction_poor(text):
+    """
+    Simple, stable condition to decide if we need to escalate to the next Tier.
+    Avoids complex math, checks for obvious failures.
+    """
+    if not text:
+        return True
+
+    # Check 1: Is it suspiciously short? (e.g., PyMuPDF only saw a header)
+    if len(text.strip()) < 50:
+        return True
+
+    # Check 2: Did the font encoding fail? (Common PyMuPDF error)
+    if "(cid:" in text:
+        return True
+
+    return False
+
+
+def extract_with_pdfplumber(pdf_path, debug=False):
+    """Tier 2: Alternative digital extraction using pdfplumber."""
+    text = ""
+    try:
+        with pdfplumber.open(pdf_path) as pdf:
+            for page in pdf.pages:
+                page_text = page.extract_text()
+                if page_text:
+                    text += page_text + "\n"
+        return text
+    except Exception as e:
+        if debug: print(f"[DEBUG] pdfplumber failed: {e}")
+        return ""
+
+
+def extract_with_docling(pdf_path, lang_list, use_ocr=True):
+    """Tier 3 & Track B: Shared Docling engine."""
+    pipeline_options = PdfPipelineOptions()
+    pipeline_options.do_table_structure = True
+    pipeline_options.do_ocr = use_ocr
+
+    if use_ocr:
+        pipeline_options.ocr_options = EasyOcrOptions(
+            force_full_page_ocr=True,
+            lang=lang_list
+        )
+
+    converter = DocumentConverter(
+        format_options={InputFormat.PDF: PdfFormatOption(pipeline_options=pipeline_options)}
+    )
+
+    result = converter.convert(pdf_path)
+    return result.document.export_to_markdown()
 
 def detector(pdf_path, lang_list, debug=False):
     """
@@ -59,34 +112,43 @@ def detector(pdf_path, lang_list, debug=False):
     is_digital = is_text_based_pdf(pdf_path, debug=debug)
 
     if is_digital:
-        if debug:
-            print("[DEBUG] Digital PDF detected. Routing to PyMuPDF4LLM for fast extraction...")
+        # ==========================================
+        # TRACK A: DIGITAL PIPELINE (3-Tier Flow)
+        # ==========================================
+        if debug: print("[DEBUG] Digital PDF detected. Starting Track A...")
 
-        return pymupdf4llm.to_markdown(pdf_path)
+        # TIER 1: Fast native extraction
+        if debug: print("[DEBUG] -> Running Tier 1 (PyMuPDF4LLM)")
+        text = pymupdf4llm.to_markdown(pdf_path)
+
+        # Evaluate Tier 1
+        if is_extraction_poor(text):
+            if debug: print("[DEBUG] Tier 1 extraction poor/corrupted. Escalating...")
+
+            # TIER 2: pdfplumber fallback
+            if debug: print("[DEBUG] -> Running Tier 2 (pdfplumber)")
+            text = extract_with_pdfplumber(pdf_path, debug)
+
+            # Evaluate Tier 2
+            if is_extraction_poor(text):
+                if debug: print("[DEBUG] Tier 2 extraction poor/corrupted. Escalating...")
+
+                # TIER 3: Docling Digital layout extraction
+                if debug: print("[DEBUG] -> Running Tier 3 (Docling Digital, OCR=False)")
+                text = extract_with_docling(pdf_path, lang_list, use_ocr=False)
+
+        # This return must be here to catch successful Tier 1, 2, or 3 extractions
+        return text
 
     else:
+        # ==========================================
+        # TRACK B: SCANNED PIPELINE
+        # ==========================================
         if debug:
             print(f"[DEBUG] Scanned image detected. Routing to Docling + EasyOCR with languages: {lang_list}...")
 
-        pipeline_options = PdfPipelineOptions()
-        pipeline_options.do_table_structure = True
-        pipeline_options.do_ocr = True
-
-        pipeline_options.ocr_options = EasyOcrOptions(
-            force_full_page_ocr=True,
-            lang=lang_list
-        )
-
-        converter = DocumentConverter(
-            format_options={InputFormat.PDF: PdfFormatOption(pipeline_options=pipeline_options)}
-        )
-
-        # FIXED INDENTATION HERE
-        result = converter.convert(pdf_path)
-        text   = result.document.export_to_markdown()
-
-        return text
-
+        # BUG 2 FIXED: Use the clean helper function instead of repeating 15 lines of code
+        return extract_with_docling(pdf_path, lang_list, use_ocr=True)
 
 def run():
     parser = argparse.ArgumentParser(description="Extract text from a PDF and save to output folder.")
